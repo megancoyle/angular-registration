@@ -1,0 +1,22 @@
+{
+  "name": "angular-registration",
+  "version": "1.0.0",
+  "description": "Angular JS registration app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megancoyle/angular-registration.git"
+  },
+  "author": "Megan Coyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megancoyle/angular-registration/issues"
+  },
+  "homepage": "https://github.com/megancoyle/angular-registration#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
