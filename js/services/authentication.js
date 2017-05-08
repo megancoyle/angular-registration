@@ -10,7 +10,7 @@ function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
       var userObj = $firebaseObject(userRef);
       $rootScope.currentUser = userObj;
     } else {
-      $rootScope.currentUser = ''; 
+      $rootScope.currentUser = '';
     }
   });
 
@@ -25,6 +25,10 @@ function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
         $rootScope.message = error.message;
       }); // signinwithemailandpassword
     }, //login
+
+    logout: function() {
+      return auth.$signOut();
+    }, //logout
 
     register: function(user) {
       auth.$createUserWithEmailAndPassword(
