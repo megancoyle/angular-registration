@@ -3,18 +3,20 @@ myApp.factory('Authentication',
 function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
   var ref = firebase.database().ref();
   var auth = $firebaseAuth();
+  var myObject;
 
   auth.$onAuthStateChanged(function(authUser) {
     if(authUser) {
       var userRef = ref.child('users').child(authUser.uid);
       var userObj = $firebaseObject(userRef);
+
       $rootScope.currentUser = userObj;
     } else {
       $rootScope.currentUser = '';
     }
   });
 
-  return {
+  myObject = {
     login: function(user) {
       auth.$signInWithEmailAndPassword(
         user.email,
@@ -47,10 +49,12 @@ function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
             lastname: user.lastname,
             email: user.email
           }); //userinfo
-        $rootScope.message = "Hi " + user.firstname + ", Thanks for registering";
+        myObject.login(user);
       }).catch(function(error) {
         $rootScope.message = error.message;
       }); // createUserWithEmailAndPassword
     }// register
   }; // return
+
+  return myObject;
 }]); // factory
