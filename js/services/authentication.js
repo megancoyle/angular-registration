@@ -1,10 +1,15 @@
 myApp.factory('Authentication',
 ['$rootScope', '$location','$firebaseObject', '$firebaseAuth',
 function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
+
+  // reference to database
   var ref = firebase.database().ref();
+  // reference authentication (gives access to different properties)
   var auth = $firebaseAuth();
+  // set up object to have proper access to this
   var myObject;
 
+  // handles when the state of authentication changes for a user
   auth.$onAuthStateChanged(function(authUser) {
     if(authUser) {
       var userRef = ref.child('users').child(authUser.uid);
@@ -16,6 +21,7 @@ function ($rootScope, $location, $firebaseObject, $firebaseAuth) {
     }
   });
 
+  // methods stored in an object for handling authentication
   myObject = {
     login: function(user) {
       auth.$signInWithEmailAndPassword(
