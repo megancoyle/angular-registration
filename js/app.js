@@ -25,7 +25,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
-        } // currentAuth
+        } // currentAuth, if user is registered and logged in
       } // resolve
     }).
     otherwise({
